@@ -4,3 +4,5 @@ Win32/
 __history/
 *.identcache
 *.stat
+*.*dsk
+*.tvsconfig

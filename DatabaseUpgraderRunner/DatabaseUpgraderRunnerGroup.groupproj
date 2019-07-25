@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{958CA7DA-285E-44DB-899B-3BE21191353A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DatabaseUpgraderRunner.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\TestDatabaseUpgraderRunner.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DatabaseUpgraderRunner">
+        <MSBuild Projects="DatabaseUpgraderRunner.dproj"/>
+    </Target>
+    <Target Name="DatabaseUpgraderRunner:Clean">
+        <MSBuild Projects="DatabaseUpgraderRunner.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DatabaseUpgraderRunner:Make">
+        <MSBuild Projects="DatabaseUpgraderRunner.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestDatabaseUpgraderRunner">
+        <MSBuild Projects="Test\TestDatabaseUpgraderRunner.dproj"/>
+    </Target>
+    <Target Name="TestDatabaseUpgraderRunner:Clean">
+        <MSBuild Projects="Test\TestDatabaseUpgraderRunner.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestDatabaseUpgraderRunner:Make">
+        <MSBuild Projects="Test\TestDatabaseUpgraderRunner.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DatabaseUpgraderRunner;TestDatabaseUpgraderRunner"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DatabaseUpgraderRunner:Clean;TestDatabaseUpgraderRunner:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DatabaseUpgraderRunner:Make;TestDatabaseUpgraderRunner:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
