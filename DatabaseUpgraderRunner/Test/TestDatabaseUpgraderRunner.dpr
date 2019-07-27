@@ -16,8 +16,8 @@ program TestDatabaseUpgraderRunner;
 
 uses
   DUnitTestRunner,
-  TestUpgraderRunner in 'TestUpgraderRunner.pas',
-  UpgraderRunner in '..\UpgraderRunner.pas';
+  TestDbUpgraderRunnerTargetFbEmbedded in 'TestDbUpgraderRunnerTargetFbEmbedded.pas';
+//  DbUpgraderRunnerTargetFbEmbedded in '..\DbUpgraderRunnerTargetFbEmbedded.pas';
 
 {$R *.RES}
 
