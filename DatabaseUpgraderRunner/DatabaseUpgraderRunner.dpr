@@ -5,6 +5,11 @@ program DatabaseUpgraderRunner;
 {$R *.res}
 
 uses
+//  System.Generics.Collections,
+//  DBUpgraderModules,
+//  OfficeModule3400,
+//  OfficeModule3500,
+
   System.SysUtils,
   UpgraderRunner in 'UpgraderRunner.pas',
   DbUpgraderRunnerTargetFbEmbedded in 'DbUpgraderRunnerTargetFbEmbedded.pas',
@@ -13,7 +18,7 @@ uses
 var
   GUpgraderRunner: TUpgraderRunner;
 //
-//  GList: TList<TDbUpgraderModuleClass>;
+//  GList: TDbUpgraderModules;
 
 begin
 {$ifdef debug}
@@ -29,8 +34,10 @@ begin
 
 //    TDbUpgraderModules.Create('TestDbUpgraderModule').RegisterModule('TestDbUpgraderMODULE3100');
 
-//    GList := TList<TDbUpgraderModuleClass>.Create;
-//    GList.Add(TOfficeDbUpgraderModule3400);
+//    GList := TDbUpgraderModules.Create(COfficeDbUpgraderModuleClassNamePrefix);
+//    GList.RegisterModule(TOfficeModule3500);
+//    GList.RegisterModule(TOfficeModule3400);
+//    GList.Sort;
 //    GList.Free;
 
     Writeln('DONE :)');
