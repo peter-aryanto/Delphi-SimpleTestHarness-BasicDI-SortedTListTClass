@@ -5,13 +5,10 @@ program DatabaseUpgraderRunner;
 {$R *.res}
 
 uses
-//  System.Generics.Collections,
-//  DbUpgraderModules,
-//
   System.SysUtils,
   UpgraderRunner in 'UpgraderRunner.pas',
   DbUpgraderRunnerTargetFbEmbedded in 'DbUpgraderRunnerTargetFbEmbedded.pas',
-  OfficeDbUpgraderModule3400 in 'Module\OfficeDbUpgraderModule3400.pas';
+  OfficeDbUpgraderModules in 'Module\Office\OfficeDbUpgraderModules.pas';
 
 var
   GUpgraderRunner: TUpgraderRunner;

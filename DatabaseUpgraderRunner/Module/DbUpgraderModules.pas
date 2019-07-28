@@ -6,11 +6,6 @@ uses
 //  System.Generics.Collections;
   System.Classes;
 
-const
-  CDbUpgraderModuleClassNamePrefix = 'DbUpgraderModule';
-  COfficeDbUpgraderModuleClassNamePrefix = 'Office' + CDbUpgraderModuleClassNamePrefix;
-  CClinicalDbUpgraderModuleClassNamePrefix = 'Clinica' + CDbUpgraderModuleClassNamePrefix;
-
 type
   TDbUpgraderModuleClass = class of TDbUpgraderModule;
   TDbUpgraderModule = class(TPersistent)
@@ -33,34 +28,11 @@ type
     property Modules[const AIndex: Integer]: string read GetModule; default;
   end;
 
-function OfficeDbUpgraderModules: TDbUpgraderModules;
-function ClinicalDbUpgraderModules: TDbUpgraderModules;
-
 implementation
 
 uses
   System.RegularExpressions,
   System.SysUtils;
-
-var
-  MOfficeDbUpgraderModules: TDbUpgraderModules;
-  MClinicalDbUpgraderModules: TDbUpgraderModules;
-
-function OfficeDbUpgraderModules: TDbUpgraderModules;
-begin
-  if not Assigned(MOfficeDbUpgraderModules) then
-    MOfficeDbUpgraderModules := TDbUpgraderModules.Create(COfficeDbUpgraderModuleClassNamePrefix);
-
-  Result := MOfficeDbUpgraderModules;
-end;
-
-function ClinicalDbUpgraderModules: TDbUpgraderModules;
-begin
-  if not Assigned(MClinicalDbUpgraderModules) then
-    MClinicalDbUpgraderModules := TDbUpgraderModules.Create(CClinicalDbUpgraderModuleClassNamePrefix);
-
-  Result := MClinicalDbUpgraderModules;
-end;
 
 { TDbUpgraderModules }
 
@@ -117,6 +89,4 @@ begin
 //  LIsCorrect := LObj is TDbUpgraderModuleClass;
 end;
 
-initialization
-finalization
 end.

@@ -92,12 +92,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="TestDbUpgraderRunnerTargetFbEmbedded.pas">
-            <Form>/  DbUpgraderRunnerTargetFbEmbedded in &apos;..\DbUpgraderRunnerTargetFbEmbedded.pas&apos;;</Form>
-        </DCCReference>
-        <DCCReference Include="TestDbUpgraderModules.pas">
-            <Form>/  DbUpgraderModules in &apos;..\Module\DbUpgraderModules.pas&apos;;</Form>
-        </DCCReference>
+        <DCCReference Include="TestDbUpgraderRunnerTargetFbEmbedded.pas"/>
+        <DCCReference Include="TestDbUpgraderModules.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -30,12 +30,12 @@ type
 implementation
 
 uses
-  OfficeDbUpgraderModule9999,
+  TestModule9999,
   System.SysUtils;
 
 procedure TestTDbUpgraderModules.SetUp;
 begin
-  FDbUpgraderModules := TDbUpgraderModules.Create(COfficeDbUpgraderModuleClassNamePrefix);
+  FDbUpgraderModules := TDbUpgraderModules.Create('TestModule');
 end;
 
 procedure TestTDbUpgraderModules.TearDown;
@@ -47,7 +47,7 @@ end;
 procedure TestTDbUpgraderModules.TestRegisterModule;
 begin
   try
-    FDbUpgraderModules.RegisterModule(TOfficeDbUpgraderModule9999);
+    FDbUpgraderModules.RegisterModule(TTestModule9999);
   except on E: Exception do
     Fail(E.Message);
   end;
