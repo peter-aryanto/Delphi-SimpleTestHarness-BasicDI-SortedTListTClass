@@ -5,28 +5,36 @@ program DatabaseUpgraderRunner;
 {$R *.res}
 
 uses
+//  System.Generics.Collections,
+//  DbUpgraderModules,
+//
   System.SysUtils,
-//  OfficeDbUpgraderModules in 'OfficeDbUpgraderModules.pas',
   UpgraderRunner in 'UpgraderRunner.pas',
-//  DbUpgraderRunnerTarget in 'DbUpgraderRunnerTarget.pas',
-  DbUpgraderRunnerTargetFbEmbedded in 'DbUpgraderRunnerTargetFbEmbedded.pas';
-
-//{/  DbUpgraderRunner in 'DbUpgraderRunner.pas';},
-//  OfficeDbUpgraderModule3400 in 'OfficeDbUpgraderModule3400.pas',
-//  OfficeDbUpgraderModule3500 in 'OfficeDbUpgraderModule3500.pas';
+  DbUpgraderRunnerTargetFbEmbedded in 'DbUpgraderRunnerTargetFbEmbedded.pas',
+  OfficeDbUpgraderModule3400 in 'Module\OfficeDbUpgraderModule3400.pas';
 
 var
   GUpgraderRunner: TUpgraderRunner;
+//
+//  GList: TList<TDbUpgraderModuleClass>;
 
 begin
 {$ifdef debug}
   ReportMemoryLeaksOnShutdown := True;
 {$endif}
 
+  GUpgraderRunner := nil;
+
   try
     GUpgraderRunner := TUpgraderRunner.Create(
       TDbUpgraderRunnerTargetFbEmbedded.Create('..\Test\Resource\DummyFbEmbed.dll'));
     //GUpgraderRunner.Run
+
+//    TDbUpgraderModules.Create('TestDbUpgraderModule').RegisterModule('TestDbUpgraderMODULE3100');
+
+//    GList := TList<TDbUpgraderModuleClass>.Create;
+//    GList.Add(TOfficeDbUpgraderModule3400);
+//    GList.Free;
 
     Writeln('DONE :)');
 

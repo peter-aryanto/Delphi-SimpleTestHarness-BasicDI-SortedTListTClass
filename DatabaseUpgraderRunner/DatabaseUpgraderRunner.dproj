@@ -74,6 +74,7 @@
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <SanitizedProjectName>DatabaseUpgraderRunner</SanitizedProjectName>
+        <DCC_UnitSearchPath>Module;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;bindcompdbx;DBXInterBaseDriver;IndySystem;tethering;fmxFireDAC;FireDAC;bindcompfmx;FireDACSqliteDriver;ibmonitor;FMXTee;soaprtl;DbxCommonDriver;FmxTeeUI;ibxpress;fmx;FireDACIBDriver;xmlrtl;soapmidas;ibxbindings;rtl;DbxClientDriver;CustomIPTransport;dbexpress;IndyCore;bindcomp;dsnap;FireDACCommon;RESTBackendComponents;soapserver;dbxcds;bindengine;CloudService;dsnapxml;dbrtl;IndyProtocols;FireDACCommonDriver;inet;$(DCC_UsePackage)</DCC_UsePackage>
@@ -142,6 +143,7 @@
         </DelphiCompile>
         <DCCReference Include="UpgraderRunner.pas"/>
         <DCCReference Include="DbUpgraderRunnerTargetFbEmbedded.pas"/>
+        <DCCReference Include="Module\OfficeDbUpgraderModule3400.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -193,7 +195,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\DatabaseUpgraderRunner.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="bin\DatabaseUpgraderRunner.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DatabaseUpgraderRunner.exe</RemoteName>
                         <Overwrite>true</Overwrite>

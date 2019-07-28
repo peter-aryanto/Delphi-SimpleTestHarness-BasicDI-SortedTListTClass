@@ -3,8 +3,7 @@ unit OfficeDbUpgraderModule3400;
 interface
 
 uses
-  DbUpgraderModule
-  ;
+  DbUpgraderModules;
 
 type
   TOfficeDbUpgraderModule3400 = class(TDbUpgraderModule)
@@ -12,10 +11,9 @@ type
 
 implementation
 
-uses
-  OfficeDbUpgraderModules
-  ;
+//uses
+//  DbUpgraderModules;
 
 initialization
-  OfficeDbUpgraderModuleList.Add(TOfficeDbUpgraderModule3400.Create);
+  OfficeDbUpgraderModules.RegisterModule(TOfficeDbUpgraderModule3400);
 end.

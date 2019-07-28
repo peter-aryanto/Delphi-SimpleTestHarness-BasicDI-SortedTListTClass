@@ -53,7 +53,7 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;..;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;..;..\Module;.\Resource;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_Define>CONSOLE_TESTRUNNER;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_OSX32)'!=''">
@@ -94,6 +94,9 @@
         </DelphiCompile>
         <DCCReference Include="TestDbUpgraderRunnerTargetFbEmbedded.pas">
             <Form>/  DbUpgraderRunnerTargetFbEmbedded in &apos;..\DbUpgraderRunnerTargetFbEmbedded.pas&apos;;</Form>
+        </DCCReference>
+        <DCCReference Include="TestDbUpgraderModules.pas">
+            <Form>/  DbUpgraderModules in &apos;..\Module\DbUpgraderModules.pas&apos;;</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -146,7 +149,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\TestDatabaseUpgraderRunner.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="bin\TestDatabaseUpgraderRunner.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>TestDatabaseUpgraderRunner.exe</RemoteName>
                         <Overwrite>true</Overwrite>
