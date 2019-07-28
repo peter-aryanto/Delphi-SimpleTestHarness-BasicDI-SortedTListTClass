@@ -31,6 +31,7 @@ implementation
 
 uses
   TestModule9999,
+  TestModule1111,
   System.SysUtils;
 
 procedure TestTDbUpgraderModules.SetUp;
@@ -48,6 +49,9 @@ procedure TestTDbUpgraderModules.TestRegisterModule;
 begin
   try
     FDbUpgraderModules.RegisterModule(TTestModule9999);
+    FDbUpgraderModules.RegisterModule(TTestModule1111);
+    CheckEquals(TTestModule1111, FDbUpgraderModules[0]);
+    CheckEquals(TTestModule9999, FDbUpgraderModules[1]);
   except on E: Exception do
     Fail(E.Message);
   end;
