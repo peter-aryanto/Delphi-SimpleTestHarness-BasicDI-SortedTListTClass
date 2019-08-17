@@ -15,14 +15,26 @@ program TestDatabaseUpgraderRunner;
 {$ENDIF}
 
 uses
-  DUnitTestRunner,
+//  TextTestRunner,//DUnitTestRunner,
+  DUnitX.TestFramework,
+  DUnitX.Loggers.Console,
   TestDbUpgraderRunnerTargetFbEmbedded in 'TestDbUpgraderRunnerTargetFbEmbedded.pas',
   TestDbUpgraderModules in 'TestDbUpgraderModules.pas';
 
 {$R *.RES}
 
+var
+  GTestRunner: ITestRunner;
+  GTestRunResult: IRunResults;
+
 begin
-  DUnitTestRunner.RunRegisteredTests;
+  ReportMemoryLeaksOnShutdown := True;
+//  TextTestRunner.RunRegisteredTests;//DUnitTestRunner.RunRegisteredTests;
+  GTestRunner := TDUnitX.CreateRunner;
+  GTestRunner.AddLogger(TDUnitXConsoleLogger.Create(True));
+  GTestRunResult := GTestRunner.Execute;
+  if not GTestRunResult.AllPassed then
+    System.ExitCode := EXIT_ERRORS;
   Readln;
 end.
 

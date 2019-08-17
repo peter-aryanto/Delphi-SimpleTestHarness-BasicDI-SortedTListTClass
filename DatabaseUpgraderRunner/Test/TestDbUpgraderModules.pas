@@ -12,18 +12,17 @@ unit TestDbUpgraderModules;
 interface
 
 uses
-  TestFramework, DbUpgraderModules;//, System.Classes;
+  DUnitX.TestFramework, DUnitX.DUnitCompatibility, DbUpgraderModules;//, System.Classes;
 
 type
-  // Test methods for class TDbUpgraderModules
-
   TestTDbUpgraderModules = class(TTestCase)
   strict private
     FDbUpgraderModules: TDbUpgraderModules;
   public
     procedure SetUp; override;
     procedure TearDown; override;
-  published
+//  published
+    [TestCase]
     procedure TestRegisterModule;
   end;
 
@@ -47,18 +46,18 @@ end;
 
 procedure TestTDbUpgraderModules.TestRegisterModule;
 begin
-  try
+//  try
     FDbUpgraderModules.RegisterModule(TTestModule9999);
     FDbUpgraderModules.RegisterModule(TTestModule1111);
     CheckEquals(TTestModule1111, FDbUpgraderModules[0]);
     CheckEquals(TTestModule9999, FDbUpgraderModules[1]);
-  except on E: Exception do
-    Fail(E.Message);
-  end;
+//  except on E: Exception do
+//    Fail(E.Message);
+//  end;
 end;
 
 initialization
   // Register any test cases with the test runner
-  RegisterTest(TestTDbUpgraderModules.Suite);
+  TDUnitX.RegisterTestFixture(TestTDbUpgraderModules);
 end.
 

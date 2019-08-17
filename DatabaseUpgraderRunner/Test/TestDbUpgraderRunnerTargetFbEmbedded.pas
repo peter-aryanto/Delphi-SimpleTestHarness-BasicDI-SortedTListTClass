@@ -12,20 +12,25 @@ unit TestDbUpgraderRunnerTargetFbEmbedded;
 interface
 
 uses
-  TestFramework, {Data.DB, DbUpgraderRunnerTarget, }DbUpgraderRunnerTargetFbEmbedded;
+  DUnitX.TestFramework, {DUnitX.DUnitCompatibility, }DUnitX.Assert,{Data.DB, DbUpgraderRunnerTarget, }DbUpgraderRunnerTargetFbEmbedded;
 
 type
-  TestTDbUpgraderRunnerTargetFbEmbedded = class(TTestCase)
+  [TestFixture]
+  TestTDbUpgraderRunnerTargetFbEmbedded = class(TObject)
   strict private const
     CDbFile = '..\Resource\DummyDb.fdb';
   strict private
     FDbUpgraderRunnerTargetFbEmbedded: TDbUpgraderRunnerTargetFbEmbedded;
   public
-    procedure SetUp; override;
-    procedure TearDown; override;
-  published
+    [SetupFixture]
+    procedure SetUp;
+    [TearDownFixture]
+    procedure TearDown;
+    [Test]
     procedure TestGetDbLocation;
+    [Test]
     procedure TestSetDbLocation;
+    [Test]
     procedure TestGetDbVersion;
   end;
 
@@ -53,27 +58,27 @@ end;
 
 procedure TestTDbUpgraderRunnerTargetFbEmbedded.TestSetDbLocation;
 begin
-  try
-    CheckEquals('', FDbUpgraderRunnerTargetFbEmbedded.GetDbLocation);
+//  try
+    Assert.AreEqual('', FDbUpgraderRunnerTargetFbEmbedded.GetDbLocation);
     FDbUpgraderRunnerTargetFbEmbedded.SetDbLocation(CDbFile);
-    CheckEquals(CDbFile, FDbUpgraderRunnerTargetFbEmbedded.GetDbLocation);
-  except on E: Exception do
-    Fail(E.Message);
-  end;
+    Assert.AreEqual(CDbFile, FDbUpgraderRunnerTargetFbEmbedded.GetDbLocation);
+//  except on E: Exception do
+//    Fail(E.Message);
+//  end;
 end;
 
 procedure TestTDbUpgraderRunnerTargetFbEmbedded.TestGetDbVersion;
 begin
-  try
-    TestSetDbLocation;
-    CheckEquals(3000, FDbUpgraderRunnerTargetFbEmbedded.GetDbVersion);
-  except on E: Exception do
-    Fail(E.Message);
-  end;
+//  try
+//    TestSetDbLocation;
+    Assert.AreEqual(3000, FDbUpgraderRunnerTargetFbEmbedded.GetDbVersion);
+//  except on E: Exception do
+//    Fail(E.Message);
+//  end;
 end;
 
 initialization
   // Register any test cases with the test runner
-  RegisterTest(TestTDbUpgraderRunnerTargetFbEmbedded.Suite);
+  TDUnitX.RegisterTestFixture(TestTDbUpgraderRunnerTargetFbEmbedded);
 end.
 
